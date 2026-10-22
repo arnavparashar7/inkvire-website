@@ -1,0 +1,100 @@
+/* ==========================================================================
+   INKVIRE SUBTLE LIVE GRAIN & MICRO-OFFSET (SCANNED ARCHIVE FEEL)
+   Restrained, filmic, imperceptible to conscious thought.
+   Form text and inputs MUST NEVER glitch.
+   ========================================================================== */
+
+.grain-overlay {
+  position: fixed;
+  inset: -20px;
+  width: calc(100vw + 40px);
+  height: calc(100vh + 40px);
+  z-index: 1;
+  pointer-events: none;
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.045;
+  mix-blend-mode: screen;
+  animation: grainJitter 8s steps(10) infinite;
+  will-change: transform, opacity;
+}
+
+/* Subtle breathing & micro-jitter for live scanned parchment texture */
+@keyframes grainJitter {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.045;
+  }
+  14% {
+    transform: translate3d(-2px, 3px, 0);
+    opacity: 0.052;
+  }
+  28% {
+    transform: translate3d(3px, -2px, 0);
+    opacity: 0.040;
+  }
+  42% {
+    transform: translate3d(-3px, -1px, 0);
+    opacity: 0.055;
+  }
+  57% {
+    transform: translate3d(2px, 4px, 0);
+    opacity: 0.042;
+  }
+  71% {
+    transform: translate3d(-1px, -3px, 0);
+    opacity: 0.050;
+  }
+  85% {
+    transform: translate3d(4px, 1px, 0);
+    opacity: 0.046;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.045;
+  }
+}
+
+/* 
+  Rare, extremely brief horizontal distortion applied ONLY to the background visual layer.
+  Occurs once every 14 seconds for only 80ms.
+*/
+.bg-artwork.ambient-drift {
+  animation: rareDistortion 14s ease-in-out infinite;
+}
+
+@keyframes rareDistortion {
+  0%, 98.4% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: none;
+  }
+  98.8% {
+    /* Rare momentary offset (80ms) */
+    transform: translate3d(-2px, 1px, 0) scale(1.002);
+    filter: brightness(1.04) contrast(1.02);
+  }
+  99.2% {
+    transform: translate3d(1px, -1px, 0) scale(1);
+    filter: none;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: none;
+  }
+}
+
+/* Accessibility: Respects prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay {
+    animation: none !important;
+    opacity: 0.04 !important;
+    transform: none !important;
+  }
+
+  .bg-artwork.ambient-drift {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

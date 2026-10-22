@@ -1,0 +1,190 @@
+/* ==========================================================================
+   INKVIRE STAGE A: LANDING SCREEN
+   Dark Editorial / Gothic Graphic Novel / Cinematic Atmosphere
+   ========================================================================== */
+
+.landing-viewport {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 48px;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Header & Wordmark */
+.landing-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wordmark-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wordmark-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-none);
+  border: 1px solid var(--border-subtle);
+  object-fit: cover;
+  filter: contrast(1.1);
+}
+
+.wordmark-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.14em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.header-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  background-color: rgba(184, 13, 23, 0.08);
+  border: 1px solid rgba(184, 13, 23, 0.35);
+  padding: 5px 12px;
+}
+
+/* Main Landing Content Block (Positioned left with deliberate negative space) */
+.landing-main {
+  max-width: 620px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+.landing-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.landing-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background-color: var(--accent-red);
+}
+
+.landing-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.landing-description {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+.landing-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.landing-cta-button {
+  padding: 16px 36px;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+}
+
+.cta-auxiliary-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* Bottom Technical Metadata Bar */
+.landing-footer {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(57, 50, 54, 0.4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.metadata-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.metadata-item strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.metadata-badge-archive {
+  color: var(--accent-ash-violet);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .landing-viewport {
+    padding: 24px 20px;
+  }
+
+  .landing-main {
+    padding: 36px 0;
+  }
+
+  .landing-cta-row {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .landing-cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .metadata-group {
+    gap: 14px;
+  }
+}

@@ -1,0 +1,116 @@
+/* ==========================================================================
+   INKVIRE ATMOSPHERIC BACKGROUND SYSTEM
+   Cinematic wide-format artwork with layered vignettes and directional shading
+   ========================================================================== */
+
+.bg-viewport-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--bg-primary);
+}
+
+/* Master Artwork Layer */
+.bg-artwork {
+  position: absolute;
+  inset: -10px;
+  background-image: url('/inkvire-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* Halo center calculated from asset metrics: 49.3% X, 35.8% Y */
+  background-position: 54% 36%;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--transition-slow), opacity var(--transition-normal);
+  will-change: transform;
+}
+
+/* Slightly shift background when form is active to emphasize ritual panel */
+.bg-artwork.mode-form {
+  background-position: 50% 32%;
+  opacity: 0.72;
+}
+
+/* Layered Shading Overlays (Preserves red/violet details, guarantees text legibility) */
+
+/* 1. Top & Bottom Edge Darkness Gradients */
+.bg-overlay-vertical {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 9, 10, 0.88) 0%,
+    rgba(10, 9, 10, 0.25) 20%,
+    rgba(10, 9, 10, 0.15) 50%,
+    rgba(10, 9, 10, 0.45) 80%,
+    rgba(10, 9, 10, 0.96) 100%
+  );
+}
+
+/* 2. Horizontal Left-to-Right Editorial Darkness (Desktop readability for landing copy) */
+.bg-overlay-horizontal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 9, 10, 0.94) 0%,
+    rgba(10, 9, 10, 0.85) 32%,
+    rgba(10, 9, 10, 0.40) 65%,
+    rgba(10, 9, 10, 0.75) 100%
+  );
+  transition: opacity var(--transition-slow);
+}
+
+.mode-form .bg-overlay-horizontal {
+  opacity: 0.6;
+}
+
+/* 3. Deep Cinematic Perimeter Vignette */
+.bg-overlay-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 40%,
+    transparent 40%,
+    rgba(10, 9, 10, 0.75) 75%,
+    rgba(10, 9, 10, 0.98) 100%
+  );
+}
+
+/* 4. Form Center Backing Shading */
+.bg-overlay-form-focus {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(10, 9, 10, 0.85) 0%,
+    rgba(10, 9, 10, 0.60) 45%,
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.mode-form .bg-overlay-form-focus {
+  opacity: 1;
+}
+
+/* Mobile & Tablet Positioning */
+@media (max-width: 900px) {
+  .bg-artwork {
+    background-position: 50% 25%;
+  }
+
+  .bg-overlay-horizontal {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 9, 10, 0.92) 0%,
+      rgba(10, 9, 10, 0.65) 35%,
+      rgba(10, 9, 10, 0.88) 70%,
+      rgba(10, 9, 10, 0.98) 100%
+    );
+  }
+}
